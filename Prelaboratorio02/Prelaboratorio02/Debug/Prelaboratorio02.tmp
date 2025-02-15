@@ -1,19 +1,19 @@
 <ASSEMBLER_INFO>
  <VERSION>2.2.8</VERSION>
  <DEVICE>"ATmega328P"</DEVICE>
- <WORKING_DIR>C:\Users\gerav\Desktop\Repositorios\Prelaboratorio02\Prelaboratorio02\Debug</WORKING_DIR>
+ <WORKING_DIR>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\Debug</WORKING_DIR>
  <INCLUDE_PATH>
   <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc</DIR>
   <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
   <DIR></DIR>
  </INCLUDE_PATH>
- <SOURCE_FILE>C:\Users\gerav\Desktop\Repositorios\Prelaboratorio02\Prelaboratorio02\main.asm</SOURCE_FILE>
+ <SOURCE_FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</SOURCE_FILE>
  <INCLUDED_FILES>
   <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc</FILE>
   <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc</FILE>
  </INCLUDED_FILES>
  <OBJECT_FILES>
-  <FILE>C:\Users\gerav\Desktop\Repositorios\Prelaboratorio02\Prelaboratorio02\Debug\Prelaboratorio02.obj</FILE>
+  <FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\Debug\Prelaboratorio02.obj</FILE>
  </OBJECT_FILES>
  <HEX_FILES>
   <FILE>Prelaboratorio02.hex</FILE>
@@ -23,9 +23,26 @@
   <FILE>Prelaboratorio02.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <SETUP><FILE>C:\Users\gerav\Desktop\Repositorios\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>23</LINE></SETUP>
-  <START_TMR0><FILE>C:\Users\gerav\Desktop\Repositorios\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>67</LINE></START_TMR0>
-  <MAIN><FILE>C:\Users\gerav\Desktop\Repositorios\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>52</LINE></MAIN>
-  <INCREMENTO><FILE>C:\Users\gerav\Desktop\Repositorios\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>74</LINE></INCREMENTO>
+  <table_DIS><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>22</LINE></table_DIS>
+  <SETUP><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>26</LINE></SETUP>
+  <START_TMR0><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>161</LINE></START_TMR0>
+  <MAIN><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>69</LINE></MAIN>
+  <TMR0><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>94</LINE></TMR0>
+  <BOTONES><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>77</LINE></BOTONES>
+  <WAIT><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>108</LINE></WAIT>
+  <INCREMENTO><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>174</LINE></INCREMENTO>
+  <DECREMENTO><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>181</LINE></DECREMENTO>
+  <FIN><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>103</LINE></FIN>
+  <INCREMENTO_tmr0><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>168</LINE></INCREMENTO_tmr0>
+  <WAIT1><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>110</LINE></WAIT1>
+  <WAIT2><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>115</LINE></WAIT2>
+  <WAIT3><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>120</LINE></WAIT3>
+  <WAIT4><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>125</LINE></WAIT4>
+  <WAIT5><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>130</LINE></WAIT5>
+  <WAIT6><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>135</LINE></WAIT6>
+  <WAIT7><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>140</LINE></WAIT7>
+  <WAIT8><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>145</LINE></WAIT8>
+  <WAIT9><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>150</LINE></WAIT9>
+  <WAIT10><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>155</LINE></WAIT10>
  </LABELS>
 </ASSEMBLER_INFO>
