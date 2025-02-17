@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm Fri Feb 14 22:17:47 2025
+AVRASM ver. 2.2.8  C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm Sun Feb 16 22:54:10 2025
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
 C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm(9): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc'
@@ -1057,171 +1057,189 @@ C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratori
 000008 677f
 000009 7c77
 00000a 5e39
-00000b 7179                      table_DIS:	.DB		0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x67,	0x77, 0x7C, 0x39, 0x5E, 0x79, 0x71
+00000b 7179                      T7S:	.DB		0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x67,	0x77, 0x7C, 0x39, 0x5E, 0x79, 0x71
                                  
                                  //-------------------------------------------------------------------------//
                                  //Configuracion de Set Up
                                  SETUP:
                                  //Desabilitamos los bits de comunicacion serial
-00000c e020                      	LDI		R18, 0x00
-00000d 9320 00c1                 	STS		UCSR0B, R18
+00000c e000                      	LDI			R16, 0x00
+00000d 9300 00c1                 	STS			UCSR0B, R16
                                  
                                  //Configuracion de oscilador externo
-00000f e800                      	LDI		R16, (1 << CLKPCE)
-000010 9300 0061                 	STS		CLKPR, R16			//Habilitamos cambiar PRESCALER
-000012 e003                      	LDI		R16, 0b00000011
-000013 9300 0061                 	STS		CLKPR, R16			//Configuramos el Prescaler a 8 => 2MHz
+00000f e800                      	LDI			R16, (1 << CLKPCE)
+000010 9300 0061                 	STS			CLKPR, R16			//Habilitamos cambiar PRESCALER
+000012 e003                      	LDI			R16, 0b00000011
+000013 9300 0061                 	STS			CLKPR, R16			//Configuramos el Prescaler a 8 => 2MHz
                                  
                                  //Iniciamos el TMR0
-000015 940e 0073                 	CALL	START_TMR0
+000015 e005                      	LDI			R16, (1<<CS02) | (1<<CS00)		//Cargarmos 1 al registro y lo corremos tres bits a la izquierda
+000016 bd05                      	OUT			TCCR0B, R16			//Colocamos Prescaler de 1024
+000017 e36d                      	LDI			R22, 61
+000018 bd66                      	OUT			TCNT0, R22
                                  
-                                 //Configuracion de salidas
-000017 ef2f                      	LDI		R18, 0xFF
-000018 b927                      	OUT		DDRC, R18			//Puerto C como salida (TMR0)
-000019 e020                      	LDI		R18, 0b00000000		
-00001a b928                      	OUT		PORTC, R18			//Todos apagados
+                                 //Configuracion de salidas/entradas
+                                 	//TMR0
+000019 ef0f                      	LDI			R16, 0xFF
+00001a b907                      	OUT			DDRC, R16			//Puerto C como salida (TMR0)
+00001b e000                      	LDI			R16, 0b00000000		
+00001c b908                      	OUT			PORTC, R16			//Todos apagados
+                                 	//DISPLAY
+00001d ef0f                      	LDI			R16, 0xFF
+00001e b90a                      	OUT			DDRD, R16			//Puerto D como salida (Display)
+00001f e000                      	LDI			R16, 0x00
+000020 b90b                      	OUT			PORTD, R16			//Todos encendidos
+                                 	//BOTONES
+000021 e010                      	LDI			R17, 0x00
+000022 b914                      	OUT			DDRB, R17
+000023 e01c                      	LDI			R17, 0b00001100
+000024 b915                      	OUT			PORTB, R17
                                  
-00001b ef2f                      	LDI		R18, 0xFF
-00001c b92a                      	OUT		DDRD, R18			//Puerto D como salida (Display)
-00001d e020                      	LDI		R18, 0x00
-00001e b92b                      	OUT		PORTD, R18			//Todos encendidos
+                                 //Cargar tabla de display de siete segmentos
+000025 e0e8                      	LDI			ZL, LOW(T7S<<1)
+000026 e0f0                      	LDI			ZH, HIGH(T7S<<1)
+000027 9184                      	LPM			R24, Z
+000028 b98b                      	OUT			PORTD, R24					//Mostramos el valor actual de Z en el puerto D
                                  
-                                 //Configuracion de entradas
-00001f e020                      	LDI		R18, 0x00
-000020 b924                      	OUT		DDRB, R18			//Puerto B como entrada
-000021 e023                      	LDI		R18, 0b00000011
-000022 b925                      	OUT		PORTB, R18			//Habilitamos Pullups
+                                 //Configuracion de registros
+000029 e02c                      	LDI			R18, 0b00001100
+00002a e040                      	LDI			CONT, 0x00
+00002b e000                      	LDI			R16, 0x00
+00002c e050                      	LDI			R21, 0x00
+00002d e080                      	LDI			R24, 0x00
+00002e e090                      	LDI			R25, 0x00
                                  
-000023 e013                      	LDI		R17, 0b00000011		//Guardamos estado inicial de R18
-                                 
-000024 e040                      	LDI		CONT, 0x00			//Iniciamos contador en 0
-                                 
-                                 //Configuracion de direccionamiento indirecto
-000025 e0e8                      	LDI		ZL, LOW(table_DIS<<1)
-000026 e0f0                      	LDI		ZH, HIGH(table_DIS<<1)		//Cargamos nuestra tabla al registro Z completo
-000027 9184                      	LPM		R24, Z						//Guardamos el valor de Z en un registro normal
-000028 b98b                      	OUT		PORTD, R24					//Mostramos el valor actual de Z en el puerto D
                                  
                                  //---------------------------------------------------------------------//
                                  //LOOP
                                  MAIN:
-000029 b305                      	IN		R16, TIFR0			//Leemos registro y lo guardamos en R16
-00002a fd00                      	SBRC	R16, TOV0	
-00002b 940e 0040                 	CALL	TMR0
-00002d 940e 0030                 	CALL	BOTONES
                                  
-00002f cff9                      	RJMP	MAIN
+00002f d010                      	RCALL		TMR0
+000030 940e 0033                 	CALL		BOTONES
+000032 cffc                      	RJMP		MAIN
                                  
                                  BOTONES:
-000030 b123                      	IN		R18, PINB		//Leemos el puerto B
-000031 1712                      	CP		R17, R18		//Comparamos valor guardado con valor actual
-000032 f3b1                      	BREQ	MAIN			//Si son iguales regresamos al inicio
-000033 940e 004a                 	CALL	WAIT			//Esperamos 0.5segundos para confirmar lectura
-000035 b123                      	IN		R18, PINB		//Leemos el puerto B
-000036 1712                      	CP		R17, R18		//Comparamos valor guardado con valor actual
-000037 f389                      	BREQ	MAIN			//Si son iguales regresamos al incio
-000038 2f12                      	MOV		R17, R18
+000033 b113                      	IN			R17, PINB		//Leemos el puerto B
+000034 1721                      	CP			R18, R17		//Comparamos valor guardado con valor actual
+000035 f049                      	BREQ		FIN_BOTONES			//Si son iguales regresamos al inicio
+000036 d015                      	RCALL		WAIT			//Esperamos 0.5segundos para confirmar lectura
+000037 b113                      	IN			R17, PINB		//Leemos el puerto B
+000038 1721                      	CP			R18, R17		//Comparamos valor guardado con valor actual
+000039 f029                      	BREQ		FIN_BOTONES			//Si son iguales regresamos al incio
+00003a 2f21                      	MOV			R18, R17
                                  
-000039 ff20                      	SBRS	R18, 0
-00003a 940e 007c                 	CALL	INCREMENTO
-00003c ff21                      	SBRS	R18, 1
-00003d 940e 0081                 	CALL	DECREMENTO
-                                 
+00003b ff12                      	SBRS		R17, 2
+00003c d03d                      	RCALL		INCREMENTO
+00003d ff13                      	SBRS		R17, 3
+00003e d03f                      	RCALL		DECREMENTO
+                                 FIN_BOTONES:
 00003f 9508                      	RET
                                  
                                  TMR0:
-000040 9aa8                      	SBI		TIFR0, TOV0
-000041 eb02                      	LDI		R16, 178
-000042 bd06                      	OUT		TCNT0, R16
-000043 9543                      	INC		CONT
-000044 3142                      	CPI		CONT, 18
-000045 f419                      	BRNE	FIN
-000046 2744                      	CLR		CONT
-000047 940e 0078                 	CALL	INCREMENTO_tmr0
-                                 	FIN:
-000049 9508                      	RET
+000040 b305                      	IN			R16, TIFR0			//Leemos registro y lo guardamos en R16
+000041 ff00                      	SBRS		R16, TOV0	
+000042 9508                      	RET
+000043 9aa8                      	SBI			TIFR0, TOV0
+000044 eb62                      	LDI			R22, 178
+000045 bd66                      	OUT			TCNT0, R22
+000046 9543                      	INC			CONT
+000047 3046                      	CPI			CONT, 6
+000048 f411                      	BRNE		FIN
+000049 2744                      	CLR			CONT
+00004a d02a                      	RCALL		INCREMENTO_tmr0
+                                 FIN:
+00004b 9508                      	RET
                                  
                                  //Subrutinas
                                  
-                                 WAIT:
-00004a e060                      	LDI		R22, 0			//Empieza la cuenta en 0
+                                 //DELAY INVESTIGADO		No se uso ya que queria probar mi delay original
+                                 /*WAIT:
+                                 	LDI			R19, 255
                                  WAIT1:
-00004b 9563                      	INC		R22				//Empieza el primer contador
-00004c 3060                      	CPI		R22, 0			//Verificamos que la cuenta termin?
-00004d f7e9                      	BRNE	WAIT1			//Si la cuenta no ha terminado que siga contando
-00004e e060                      	LDI		R22, 0			//De haber terminado, volver a cargar 0
-                                 WAIT2:
-00004f 9563                      	INC		R22				
-000050 3060                      	CPI		R22, 0			
-000051 f7e9                      	BRNE	WAIT2
-000052 e060                      	LDI		R22, 0
-                                 WAIT3:
-000053 9563                      	INC		R22				
-000054 3060                      	CPI		R22, 0			
-000055 f7e9                      	BRNE	WAIT3			
-000056 e060                      	LDI		R22, 0
-                                 WAIT4:
-000057 9563                      	INC		R22				
-000058 3060                      	CPI		R22, 0			
-000059 f7e9                      	BRNE	WAIT4			
-00005a e060                      	LDI		R22, 0
-                                 WAIT5:
-00005b 9563                      	INC		R22				
-00005c 3060                      	CPI		R22, 0			
-00005d f7e9                      	BRNE	WAIT5			
-00005e e060                      	LDI		R22, 0
-                                 WAIT6:
-00005f 9563                      	INC		R22			
-000060 3060                      	CPI		R22, 0			
-000061 f7e9                      	BRNE	WAIT6			
-000062 e060                      	LDI		R22, 0
-                                 WAIT7:
-000063 9563                      	INC		R22			
-000064 3060                      	CPI		R22, 0			
-000065 f7e9                      	BRNE	WAIT7			
-000066 e060                      	LDI		R22, 0
-                                 WAIT8:
-000067 9563                      	INC		R22				
-000068 3060                      	CPI		R22, 0			
-000069 f7e9                      	BRNE	WAIT8			
-00006a e060                      	LDI		R22, 0
-                                 WAIT9:
-00006b 9563                      	INC		R22				
-00006c 3060                      	CPI		R22, 0			
-00006d f7e9                      	BRNE	WAIT9			
-00006e e060                      	LDI		R22, 0
-                                 WAIT10:
-00006f 9563                      	INC		R22				
-000070 3060                      	CPI		R22, 0			
-000071 f7e9                      	BRNE	WAIT10			
-000072 9508                      	RET						//Regresamos a MAIN
+                                 	DEC			R19
+                                 	BRNE		WAIT1
+                                 	RET*/
                                  
-                                 START_TMR0:
-000073 e004                      	LDI		R16, (1<<CS02)		//Cargarmos 1 al registro y lo corremos tres bits a la izquierda
-000074 bd05                      	OUT		TCCR0B, R16			//Colocamos Prescaler de 256
-000075 eb02                      	LDI		R16, 178
-000076 bd06                      	OUT		TCNT0, R16			//Cargamos valor inicial 
-000077 9508                      	RET
+                                 //DELAY
+                                 WAIT:
+00004c e030                      	LDI			R19, 0			//Empieza la cuenta en 0
+                                 WAIT1:	
+00004d 9533                      	INC			R19				
+00004e 3030                      	CPI			R19, 0			
+00004f f7e9                      	BRNE		WAIT1			
+000050 e030                      	LDI			R19, 0
+                                 WAIT2:
+000051 9533                      	INC			R19				
+000052 3030                      	CPI			R19, 0			
+000053 f7e9                      	BRNE		WAIT2
+000054 e030                      	LDI			R19, 0
+                                 WAIT3:
+000055 9533                      	INC			R19				
+000056 3030                      	CPI			R19, 0			
+000057 f7e9                      	BRNE		WAIT3			
+000058 e030                      	LDI			R19, 0
+                                 WAIT4:
+000059 9533                      	INC			R19				
+00005a 3030                      	CPI			R19, 0			
+00005b f7e9                      	BRNE		WAIT4			
+00005c e030                      	LDI			R19, 0
+                                 WAIT5:
+00005d 9533                      	INC			R19				
+00005e 3030                      	CPI			R19, 0			
+00005f f7e9                      	BRNE		WAIT5			
+000060 e030                      	LDI			R19, 0
+                                 WAIT6:
+000061 9533                      	INC			R19			
+000062 3030                      	CPI			R19, 0			
+000063 f7e9                      	BRNE		WAIT6			
+000064 e030                      	LDI			R19, 0
+                                 WAIT7:
+000065 9533                      	INC			R19			
+000066 3030                      	CPI			R19, 0			
+000067 f7e9                      	BRNE		WAIT7			
+000068 e030                      	LDI			R19, 0
+                                 WAIT8:
+000069 9533                      	INC			R19				
+00006a 3030                      	CPI			R19, 0			
+00006b f7e9                      	BRNE		WAIT8			
+00006c e030                      	LDI			R19, 0
+                                 WAIT9:
+00006d 9533                      	INC			R19				
+00006e 3030                      	CPI			R19, 0			
+00006f f7e9                      	BRNE		WAIT9			
+000070 e030                      	LDI			R19, 0
+                                 WAIT10:
+000071 9533                      	INC			R19				
+000072 3030                      	CPI			R19, 0			
+000073 f7e9                      	BRNE		WAIT10			
+000074 9508                      	RET							//Regresamos a MAIN
                                  
                                  INCREMENTO_tmr0:
-000078 9533                      	INC		R19
-000079 703f                      	ANDI	R19, 0x0F
-00007a b938                      	OUT		PORTC, R19
-00007b 9508                      	RET
+000075 9553                      	INC			R21
+000076 705f                      	ANDI		R21, 0x0F
+000077 b958                      	OUT			PORTC, R21
+000078 d009                      	RCALL		ACTUALIZAR
+000079 9508                      	RET
                                  
                                  INCREMENTO:
-00007c 9553                      	INC		R21
-00007d 9631                      	ADIW	Z, 1
-00007e 9144                      	LPM		R20, Z
-00007f b94b                      	OUT		PORTD, R20
-000080 9508                      	RET
+00007a 9583                      	INC			R24
+00007b 708f                      	ANDI		R24, 0x0F
+00007c d005                      	RCALL		ACTUALIZAR
+00007d 9508                      	RET
                                  
                                  DECREMENTO:
-000081 955a                      	DEC		R21
-000082 9731                      	SBIW	Z, 1
-000083 9144                      	LPM		R20, Z
-000084 b94b                      	OUT		PORTD, R20
-000085 9508                      	RET
+00007e 958a                      	DEC			R24
+00007f 708f                      	ANDI		R24, 0x0F
+000080 d001                      	RCALL		ACTUALIZAR
+000081 9508                      	RET
+                                 
+                                 ACTUALIZAR:
+000082 e0e8                      	LDI			ZL, LOW(T7S<<1)
+000083 e0f0                      	LDI			ZH, HIGH(T7S<<1)
+000084 0fe8                      	ADD			ZL, R24
+000085 9194                      	LPM			R25, Z
+000086 b99b                      	OUT			PORTD, R25
+000087 9508                      	RET
                                  
 
 
@@ -1240,39 +1258,39 @@ counted separately from r26..r31 here.
 .dseg memory usage only counts static data declared with .byte
 
 "ATmega328P" register use summary:
-x  :   0 y  :   0 z  :   5 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
+x  :   0 y  :   0 z  :   2 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:  16 r17:   4 r18:  21 r19:   3 r20:   8 
-r21:   2 r22:  30 r23:   0 r24:   2 r25:   0 r26:   0 r27:   0 r28:   0 
-r29:   0 r30:   1 r31:   1 
-Registers used: 11 out of 35 (31.4%)
+r13:   0 r14:   0 r15:   0 r16:  23 r17:  11 r18:   4 r19:  30 r20:   4 
+r21:   4 r22:   4 r23:   0 r24:   8 r25:   3 r26:   0 r27:   0 r28:   0 
+r29:   0 r30:   3 r31:   2 
+Registers used: 12 out of 35 (34.3%)
 
 "ATmega328P" instruction use summary:
-.lds  :   0 .sts  :   0 adc   :   0 add   :   0 adiw  :   1 and   :   0 
-andi  :   1 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
+.lds  :   0 .sts  :   0 adc   :   0 add   :   1 adiw  :   0 and   :   0 
+andi  :   3 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
 brcc  :   0 brcs  :   0 break :   0 breq  :   2 brge  :   0 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
 brne  :  11 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
-brvs  :   0 bset  :   0 bst   :   0 call  :   7 cbi   :   0 cbr   :   0 
+brvs  :   0 bset  :   0 bst   :   0 call  :   1 cbi   :   0 cbr   :   0 
 clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   1 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   2 cpc   :   0 
 cpi   :  11 cpse  :   0 dec   :   1 eor   :   0 fmul  :   0 fmuls :   0 
 fmulsu:   0 icall :   0 ijmp  :   0 in    :   3 inc   :  13 jmp   :   0 
-ld    :   0 ldd   :   0 ldi   :  28 lds   :   0 lpm   :   6 lsl   :   0 
+ld    :   0 ldd   :   0 ldi   :  34 lds   :   0 lpm   :   4 lsl   :   0 
 lsr   :   0 mov   :   1 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
-neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :  15 pop   :   0 
-push  :   0 rcall :   0 ret   :   7 reti  :   0 rjmp  :   1 rol   :   0 
+neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :  14 pop   :   0 
+push  :   0 rcall :   8 ret   :   8 reti  :   0 rjmp  :   1 rol   :   0 
 ror   :   0 sbc   :   0 sbci  :   0 sbi   :   1 sbic  :   0 sbis  :   0 
-sbiw  :   1 sbr   :   0 sbrc  :   1 sbrs  :   2 sec   :   0 seh   :   0 
+sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   3 sec   :   0 seh   :   0 
 sei   :   0 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
 sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   3 
 sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 22 out of 113 (19.5%)
+Instructions used: 21 out of 113 (18.6%)
 
 "ATmega328P" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x00010c    252     16    268   32768   0.8%
+[.cseg] 0x000000 0x000110    256     16    272   32768   0.8%
 [.dseg] 0x000100 0x000100      0      0      0    2048   0.0%
 [.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 
