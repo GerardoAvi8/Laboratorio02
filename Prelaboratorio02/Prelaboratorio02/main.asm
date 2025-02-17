@@ -50,7 +50,12 @@ SETUP:
 	LDI			R16, 0xFF
 	OUT			DDRD, R16			//Puerto D como salida (Display)
 	LDI			R16, 0x00
-	OUT			PORTD, R16			//Todos encendidos
+	OUT			PORTD, R16			//Todos apagados
+	//ALARMA
+	LDI			R16, 0xFF
+	OUT			DDRC, R16
+	LDI			R16, 0x00
+	OUT			PORTC, R16
 	//BOTONES
 	LDI			R17, 0x00
 	OUT			DDRB, R17
@@ -75,9 +80,9 @@ SETUP:
 //---------------------------------------------------------------------//
 //LOOP
 MAIN:
-
 	RCALL		TMR0
 	CALL		BOTONES
+	RCALL		COMPARAR
 	RJMP		MAIN
 
 BOTONES:
@@ -112,7 +117,8 @@ TMR0:
 FIN:
 	RET
 
-//Subrutinas
+//----------------------------------------------------------------------//
+//SUBRUTINAS
 
 //DELAY INVESTIGADO		No se uso ya que queria probar mi delay original
 /*WAIT:
@@ -202,4 +208,22 @@ ACTUALIZAR:
 	LPM			R25, Z
 	OUT			PORTD, R25
 	RET
+
+COMPARAR:
+	CP			R21, R24
+	BRNE		APAGAR
+	SBI			PORTC, 4
+	CLR			R21
+	RCALL		ACTUALIZAR	
+	LDI			R23, 0x01		
+	RET
+APAGAR:
+	CP			R21, R24
+	BRNE		SALIR
+	CBI			PORTC, 4
+	LDI			R23, 0x00
+	RET	
+SALIR:
+	RET
+	
 
