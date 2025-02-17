@@ -25,28 +25,28 @@
  <LABELS>
   <T7S><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>22</LINE></T7S>
   <SETUP><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>26</LINE></SETUP>
-  <MAIN><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>82</LINE></MAIN>
-  <TMR0><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>105</LINE></TMR0>
-  <BOTONES><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>88</LINE></BOTONES>
-  <COMPARAR><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>212</LINE></COMPARAR>
-  <FIN_BOTONES><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>102</LINE></FIN_BOTONES>
-  <WAIT><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>132</LINE></WAIT>
-  <INCREMENTO><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>192</LINE></INCREMENTO>
-  <DECREMENTO><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>198</LINE></DECREMENTO>
-  <FIN><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>117</LINE></FIN>
-  <INCREMENTO_tmr0><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>185</LINE></INCREMENTO_tmr0>
-  <WAIT1><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>134</LINE></WAIT1>
-  <WAIT2><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>139</LINE></WAIT2>
-  <WAIT3><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>144</LINE></WAIT3>
-  <WAIT4><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>149</LINE></WAIT4>
-  <WAIT5><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>154</LINE></WAIT5>
-  <WAIT6><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>159</LINE></WAIT6>
-  <WAIT7><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>164</LINE></WAIT7>
-  <WAIT8><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>169</LINE></WAIT8>
-  <WAIT9><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>174</LINE></WAIT9>
-  <WAIT10><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>179</LINE></WAIT10>
-  <ACTUALIZAR><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>204</LINE></ACTUALIZAR>
-  <APAGAR><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>220</LINE></APAGAR>
-  <SALIR><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>226</LINE></SALIR>
+  <MAIN><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>77</LINE></MAIN>
+  <TMR0><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>100</LINE></TMR0>
+  <BOTONES><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>83</LINE></BOTONES>
+  <COMPARAR><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>207</LINE></COMPARAR>
+  <FIN_BOTONES><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>97</LINE></FIN_BOTONES>
+  <WAIT><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>127</LINE></WAIT>
+  <INCREMENTO><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>187</LINE></INCREMENTO>
+  <DECREMENTO><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>193</LINE></DECREMENTO>
+  <FIN><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>112</LINE></FIN>
+  <INCREMENTO_tmr0><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>180</LINE></INCREMENTO_tmr0>
+  <WAIT1><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>129</LINE></WAIT1>
+  <WAIT2><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>134</LINE></WAIT2>
+  <WAIT3><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>139</LINE></WAIT3>
+  <WAIT4><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>144</LINE></WAIT4>
+  <WAIT5><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>149</LINE></WAIT5>
+  <WAIT6><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>154</LINE></WAIT6>
+  <WAIT7><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>159</LINE></WAIT7>
+  <WAIT8><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>164</LINE></WAIT8>
+  <WAIT9><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>169</LINE></WAIT9>
+  <WAIT10><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>174</LINE></WAIT10>
+  <ACTUALIZAR><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>199</LINE></ACTUALIZAR>
+  <APAGAR><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>215</LINE></APAGAR>
+  <SALIR><FILE>C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm</FILE><LINE>221</LINE></SALIR>
  </LABELS>
 </ASSEMBLER_INFO>

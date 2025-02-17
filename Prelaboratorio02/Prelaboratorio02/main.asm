@@ -41,7 +41,7 @@ SETUP:
 	OUT			TCNT0, R22
 
 //Configuracion de salidas/entradas
-	//TMR0
+	//TMR0 y ALARMA
 	LDI			R16, 0xFF
 	OUT			DDRC, R16			//Puerto C como salida (TMR0)
 	LDI			R16, 0b00000000		
@@ -51,11 +51,6 @@ SETUP:
 	OUT			DDRD, R16			//Puerto D como salida (Display)
 	LDI			R16, 0x00
 	OUT			PORTD, R16			//Todos apagados
-	//ALARMA
-	LDI			R16, 0xFF
-	OUT			DDRC, R16
-	LDI			R16, 0x00
-	OUT			PORTC, R16
 	//BOTONES
 	LDI			R17, 0x00
 	OUT			DDRB, R17
