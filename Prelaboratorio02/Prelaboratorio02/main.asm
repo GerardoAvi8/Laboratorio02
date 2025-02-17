@@ -37,7 +37,7 @@ SETUP:
 //Iniciamos el TMR0
 	LDI			R16, (1<<CS02) | (1<<CS00)		//Cargarmos 1 al registro y lo corremos tres bits a la izquierda
 	OUT			TCCR0B, R16			//Colocamos Prescaler de 1024
-	LDI			R22, 61
+	LDI			R22, 60
 	OUT			TCNT0, R22
 
 //Configuracion de salidas/entradas
@@ -102,10 +102,10 @@ TMR0:
 	SBRS		R16, TOV0	
 	RET
 	SBI			TIFR0, TOV0
-	LDI			R22, 178
+	LDI			R22, 60
 	OUT			TCNT0, R22
 	INC			CONT
-	CPI			CONT, 6
+	CPI			CONT, 10
 	BRNE		FIN
 	CLR			CONT
 	RCALL		INCREMENTO_tmr0

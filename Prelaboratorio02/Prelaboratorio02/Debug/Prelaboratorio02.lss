@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm Sun Feb 16 22:54:10 2025
+AVRASM ver. 2.2.8  C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm Sun Feb 16 23:35:33 2025
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\m328Pdef.inc'
 C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratorio02\main.asm(9): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\avrasm\inc\M328PDEF.inc'
@@ -1075,7 +1075,7 @@ C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratori
                                  //Iniciamos el TMR0
 000015 e005                      	LDI			R16, (1<<CS02) | (1<<CS00)		//Cargarmos 1 al registro y lo corremos tres bits a la izquierda
 000016 bd05                      	OUT			TCCR0B, R16			//Colocamos Prescaler de 1024
-000017 e36d                      	LDI			R22, 61
+000017 e36c                      	LDI			R22, 60
 000018 bd66                      	OUT			TCNT0, R22
                                  
                                  //Configuracion de salidas/entradas
@@ -1140,10 +1140,10 @@ C:\Users\gerav\Desktop\Repositorios\Laboratorio02\Prelaboratorio02\Prelaboratori
 000041 ff00                      	SBRS		R16, TOV0	
 000042 9508                      	RET
 000043 9aa8                      	SBI			TIFR0, TOV0
-000044 eb62                      	LDI			R22, 178
+000044 e36c                      	LDI			R22, 60
 000045 bd66                      	OUT			TCNT0, R22
 000046 9543                      	INC			CONT
-000047 3046                      	CPI			CONT, 6
+000047 304a                      	CPI			CONT, 10
 000048 f411                      	BRNE		FIN
 000049 2744                      	CLR			CONT
 00004a d02a                      	RCALL		INCREMENTO_tmr0
